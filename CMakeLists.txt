@@ -85,7 +85,10 @@ endif()
 # Enable link-time optimisations on release builds.
 check_c_compiler_flag(-flto HAS_FLTO_FLAG)
 if(HAS_FLTO_FLAG)
-  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -flto")
+  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto")
+  set(CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} -flto")
+  set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -flto")
+  set(CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO "${CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO} -flto")
 endif()
 
 # Disable logging for release-type builds.
